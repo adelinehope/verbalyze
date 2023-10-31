@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;800&display=swap');
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	max-height: 100vh;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-rows: 5rem auto;
+	overflow: hidden;
+	font-family: 'Quicksand', 'Robotto', Arial, sans-serif;
+}
+
+* {
+	font-family: inherit;
+}
+
+.no-decorator {
+	text-decoration: none;
+}
+
+
+.content{
+	overflow: auto;
+	padding-inline: 2rem;
+}
+
+.navbar {
+	background-color: black;
+	color: white;
+	display: flex;
+	place-items: center;
+	justify-content: space-between;
+}
+
+.navbar .logo {
+	height: 100%;
+	display: grid;
+	padding: 1rem;
+	place-items: center;
+	width: 5rem;
+	box-sizing: border-box;
+}
+
+.navbar .logo img {
+	height: 100%;
+	aspect-ratio: 1;
+}
+
+.navbar nav {
+	display: grid;
+	grid-auto-flow: column;
+	gap: 2rem;
+	place-self: start;
+	padding-top: 1.5rem;
+	padding-inline: 3rem;
+}
+
+.navbar nav a {
+	--link-decorator-thickness: 1px;
+	--link-decorator-hover-thickness: 3px;
+	--link-decorator-hover-transition-time: 100ms;
+	color: white;
+	font-size: 1.25rem;
+	font-family: 300;
+	position: relative;
+	padding-inline: 2rem;
+	transition: padding var(--link-decorator-hover-transition-time) ease-out;
+}
+
+.navbar nav a::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	height: var(--link-decorator-thickness);
+	left: 0;
+	right: 0;
+	background-color: white;
+	transition: height var(--link-decorator-hover-transition-time) ease-out;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+	padding-top: calc(var(--link-decorator-hover-thickness) - var(--link-decorator-thickness));
+}
+
+.navbar nav a:hover::before,
+.navbar nav a.active::before {
+	height: var(--link-decorator-hover-thickness);
+}
+
+/* Login/Register form */
+
+.form-wrapper {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.form-box {
+	background-color: black;
+	padding: 2rem;
+	height: 80%;
+	width: max(20%, 250px);
+	position: relative;
+	color: white;
+
+	transition: right 100ms ease-out;
+}
+
+.form-box.error {
+	right: 7.5%;
+}
+
+.form-title {
+	text-align: center;
+}
+
+.form-box > form {
+	display: grid;
+	gap: 1rem;
+}
+
+.form-error {
+	position: relative;
+	left: 80%;
+	top: 3rem;
+	max-width: 30vw;
+	
+	padding: 2rem;
+	background-color: red
+}
+
+.form-group {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.form-input {
+	border: none;
+	padding: 0.5rem;
+	height: 2rem;
+	background-color: white;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.form-input:autofill,
+.form-input:-webkit-autofill {
+	background-color: white;
+}
+
+.password-field {
+	display: grid;
+	gap: 0;
+	grid-auto-flow: column;
+	width: 100%;
+	grid-template-columns: auto 2rem;
+}
+
+.password-field .show-password {
+	aspect-ratio: 1;
+	width: 2rem;
+	cursor: pointer;
+	background-color: white;
+	display: grid;
+	place-items: center;
+	padding: 0;
+}
+
+.password-field .show-password img {
+	width: 75%
+}
+
+.password-field .show-password:hover {
+	background-color: hsl(0, 0%, 90%);
+}
+
+.form-input.button {
+	font-weight: 800;
+	position: relative;
+	background-color: hsl(200, 100%, 40%);
+}
+
+.form-input.button:hover,
+.form-input.button:focus-visible {
+	background-color: hsl(200, 75%, 50%);
+}
+
+.form-input.button:disabled {
+	background-color: white;
+}
+
+.form-link {
+	color: white;
+}
+
+/* Portfolio */
+
+.project-grid {
+	--grid-gap: 1.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, calc(calc(100% - var(--grid-gap)*2) / 3));
+	gap: var(--grid-gap);
+	margin-bottom: calc(var(--grid-gap)*2);
+}
+
+.project-container {
+	background-color: black;
+	color: white;
+}
+
+.project-container h3 {
+	margin-left: 1rem;
+}
+
+.project-container .project-content {
+	position: relative;
+} 
+
+.project-container .project-content .image-wrapper {
+	aspect-ratio: 16/8;
+	width: 100%;
+}
+
+.project-container .project-content .image-wrapper img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	display: block;
+	user-select: none;
+}
+
+.project-container .project-content .link {
+	color: white;
+	position: absolute;
+	right: -1rem;
+	bottom: -1rem;
+	background-color: hsl(200, 100%, 40%);
+	padding: 0.5rem 1rem;
+	min-width: 50%;
+	transition: translate 250ms ease-out;
+}
+
+.project-container .project-content:hover .link {
+	translate: -1rem -1rem;
+}
+
+/* About */
+
+.about-wrapper {
+	display: grid;
+	grid-template-columns: auto 45%;
+	grid-template-rows: auto auto;
+	grid-template-areas: 
+	"blank about"
+	"hobbies socials";
+	padding-right: 5%;
+}
+
+.about-content {
+	grid-area: about;
+}
+
+.social-content {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	grid-area: socials;
+}
+
+.social-content h2 {
+	background-color: hsl(200, 100%, 40%);
+	margin: 0;
+	padding: 1rem;
+	width: min-content;
+	height: fit-content;
+}
+
+.social-links {
+	margin: 0;
+	padding: 1rem;
+	list-style: none;
+	display: flex;
+	gap: 17.7rem;
+	background-color: black;
+	flex-wrap: wrap;
+	height: min-content;
+}
+
+.social-links li {
+	aspect-ratio: 1;
+	width: 4rem;
+	display: block;
+}
+
+.social-links a {
+	color: white;
+	aspect-ratio: 1;
+	background-color: white;
+}
+
+.social-links a img {
+	width: 100%;
+	aspect-ratio: 1;
+	display: block
+}
+
+.hobbies-content {
+	grid-area: hobbies;
+}
