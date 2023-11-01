@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+
+{% block title %}
+Verbalyze
+{% endblock %}
+
+{% block content %}
+
+<div class="notepad">
+    <textarea id="textArea" rows="10" cols="50"></textarea>
+</div>  
+
+<div class="recorder">
+    <h3>Click here to Start/Stop Recording</h3>
+    <button id="recordButton" class="center"> START RECORDING</button>
+</div>
+
+<div id="summaryContainer" class="summary"></div>
+
+<script>
+    var isRecording = false;
+    var recordButton = document.getElementById("recordButton");
+    var summaryContainer = document.getElementById("summaryContainer");
+
+    recordButton.addEventListener("click", function() {
+        isRecording = !isRecording;
+        recordButton.textContent = isRecording ? "STOP RECORDING" : "START RECORDING";
+
+        if (isRecording) {
+            var existingSummarizeButton = document.getElementById("summarizeButton");
+            if (existingSummarizeButton) {
+                summaryContainer.removeChild(existingSummarizeButton);
+            }
+        } else {
+            var summarizeButton = document.createElement("button");
+            summarizeButton.id = "summarizeButton";
+            summarizeButton.className = "center";
+            summarizeButton.textContent = "SUMMARIZE";
+            summarizeButton.addEventListener("click", function() {
+            window.location.href = "/download"});
+            summaryContainer.appendChild(summarizeButton);
+        }
+    });
+</script>
+
+{% endblock %}
