@@ -8,7 +8,7 @@ Verbalyze
 
 <div class="notepad">
     <textarea id="textArea" rows="10" cols="50"></textarea>
-</div>  
+</div>
 
 <div class="recorder">
     <h3>Click here to Start/Stop Recording</h3>
@@ -27,10 +27,15 @@ Verbalyze
         recordButton.textContent = isRecording ? "STOP RECORDING" : "START RECORDING";
 
         if (isRecording) {
+            var notepad = document.getElementById('textArea');
+            window.addEventListener('click', function() {
+                notepad.focus();
+            });
             var existingSummarizeButton = document.getElementById("summarizeButton");
             if (existingSummarizeButton) {
                 summaryContainer.removeChild(existingSummarizeButton);
             }
+                
         } else {
             var summarizeButton = document.createElement("button");
             summarizeButton.id = "summarizeButton";
