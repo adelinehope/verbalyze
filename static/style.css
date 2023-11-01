@@ -97,6 +97,7 @@ html {
 	width: 800px;
 	height: 800px;
 	padding: 20px;
+	overflow: hidden;
 	background-color: #191A1A;
   }
   
@@ -104,6 +105,7 @@ textarea {
 	width: 90%;
 	border: none;
 	resize: none;
+	outline: none;
 	height: 100%;
 	padding: 10px;
 	font-size: 20px;
