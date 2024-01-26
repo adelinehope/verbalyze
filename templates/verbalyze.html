@@ -63,12 +63,15 @@ recordButton.addEventListener("click", function() {
         summarizeButton.textContent = "SUMMARIZE";
         summarizeButton.addEventListener("click", function() {
             const text = textArea.value;
+            const url = `/download.html?transcript=${encodeURIComponent(text)}`;
+            window.location.href = url;
             console.log("Text sent for summarization:", text);
         window.location.href = "/download"});
         summaryContainer.appendChild(summarizeButton);
         recognition.stop();
             console.log("Speech recognition stopped.");
     }})
+
 </script>
 
 {% endblock %}

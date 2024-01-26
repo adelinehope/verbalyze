@@ -5,5 +5,10 @@ Verbalyze
 {% endblock %}
 
 {% block content %}
-
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const transcript = urlParams.get('transcript');
+    console.log(transcript);
+</script>
 {% endblock %}
